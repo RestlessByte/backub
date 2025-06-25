@@ -1,0 +1,6 @@
+#1749557873 Disk /dev/nvme0n1 - 1024 GB / 953 GiB - CHS 976762 64 32
+ 1 : start=     4096, size=   614400, Id=00, P
+ 2 : start=   618496, size=1999779239, Id=00, P
+#1749558037 Disk /dev/nvme0n1 - 1024 GB / 953 GiB - CHS 976762 64 32
+ 1 : start=     4096, size=   614400, Id=00, P
+ 2 : start=   618496, size=1999779239, Id=00, P

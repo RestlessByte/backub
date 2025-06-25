@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=2560, height=1440">
+  <link rel="stylesheet" href="index.css">
+  <title>Dev Stream Overlay</title>
+</head>
+
+<body>
+  <div class="overlay">
+    <!-- Левый блок: Чат -->
+    <div class="panel chat-panel">
+      <div class="panel-header">
+        <div class="panel-icon">💬</div>
+        <div class="panel-title">Чат [Twitch]</div>
+      </div>
+      <div class="panel-content"></div>
+    </div>
+
+    <!-- Центральный блок: Экран разработки -->
+    <div class="panel stream-panel">
+      <div class="panel-header">
+        <div class="panel-icon">👨‍💻</div>
+        <div class="panel-title">Рабочее пространство</div>
+      </div>
+      <div class="panel-content"></div>
+    </div>
+
+    <!-- Правый блок: Информация -->
+    <div class="panel info-panel">
+      <div class="panel-header">
+        <div class="panel-icon">ℹ️</div>
+        <div class="panel-title">Демонстрация проекта</div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <!-- Нижние элементы -->
+  <div class="coding-symbol">
+    <span id="symbol">&lt;/&gt;</span>
+  </div>
+
+  <div class="donate-widget">
+    <span class="donate-label">Поддержать:</span>
+    <span class="donate-value">7019 1980 9092</span>
+  </div>
+
+  <div class="branding">
+    <img src="./attachment/photo/u.jpg" alt="Логотип" class="logo">
+    <div class="streamer-name">ResttlessByte</div>
+  </div>
+  </div>
+
+  <script>
+    const symbol = document.getElementById('symbol');
+    const updateSymbol = () => symbol.textContent = '</>';
+    updateSymbol();
+  </script>
+</body>
+
+</html>

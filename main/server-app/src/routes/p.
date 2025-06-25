@@ -1,0 +1,90 @@
+"use client"; // Для использования на стороне клиента
+import { decryptedDataClient, encryptedDataClient } from "@main/crypto/client";
+import { DecryptedKeys } from "@main/ux/decrypted/decryptedKeys";
+import { IPostDataOnServer } from "./type";
+
+export const API = async (
+  payload: IPostDataOnServer | null,
+  endpoint: string,
+  technology?: 'rest' | 'websocket', // Опциональный параметр для rest или websocket
+  serverUrl: string = "https://84.39.243.205"
+): Promise<any> => {
+  try {
+    if (technology === 'websocket') {
+      return await handleWebSocket(payload, endpoint, serverUrl);
+    }
+
+    // Шифрование данных
+    const encrypt = payload ? await encryptedDataClient(payload, DecryptedKeys) : null;
+
+    // Выбор URL в зависимости от технологии
+    const url = technology === 'rest'
+      ? `${serverUrl}/api/${endpoint}` // Внешний REST API
+      : `/api/${endpoint}`; // По умолчанию Next.js API
+
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ data: encrypt }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const res = await response.json();
+    return res.data ? await decryptedDataClient(res.data, DecryptedKeys) : null;
+  } catch (error) {
+    console.error("API Error:", error);
+    throw error;
+  }
+};
+
+// WebSocket handler
+const handleWebSocket = async (
+  payload: IPostDataOnServer | null,
+  endpoint: string,
+  serverUrl: string
+): Promise<any> => {
+  return new Promise((resolve, reject) => {
+    // Исправленный путь WebSocket
+    const wsUrl = `${serverUrl.replace(/^https?:\/\//, "wss://")}/wss`; // Соответствует конфигурации Nginx
+    const ws = new WebSocket(wsUrl);
+
+    ws.onopen = async () => {
+      if (payload) {
+        try {
+          const encryptedPayload = await encryptedDataClient(payload, DecryptedKeys);
+          ws.send(JSON.stringify({ path: encryptedPayload, endpoint }));
+        } catch (encryptionError) {
+          reject(new Error("Encryption failed: " + encryptionError));
+        }
+      }
+    };
+
+    ws.onmessage = async (event) => {
+      try {
+        const message = JSON.parse(event.data);
+        if (message.data) {
+          const decryptedData = await decryptedDataClient(message.data, DecryptedKeys);
+          resolve(decryptedData);
+        } else {
+          reject(new Error("Invalid response from WebSocket"));
+        }
+      } catch (parseError) {
+        reject(new Error("Failed to parse WebSocket message: " + parseError));
+      } finally {
+        ws.close();
+      }
+    };
+
+    ws.onerror = (error) => {
+      console.error("WebSocket Error:", error);
+      reject(error);
+    };
+
+    ws.onclose = () => {
+      console.log("WebSocket connection closed");
+    };
+  });
+};

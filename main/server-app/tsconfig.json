@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "target": "es2024",
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": "./",
+    "paths": {
+      "@db/*": [
+        "./db/connects"
+      ],
+      "@crypto/*": [
+        "./crypto/client",
+      ],
+      "@decrypted/*": [
+        "./decrypted/decryptedKeys"
+      ]
+    },
+    "baseUrl": "./",
+    "skipLibCheck": true,
+    "incremental": true
+  }
+}

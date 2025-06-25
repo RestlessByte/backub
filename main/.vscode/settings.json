@@ -1,0 +1,81 @@
+{
+  // --- Внешний вид ---
+  "workbench.colorTheme": "Dark Side",
+  "workbench.iconTheme": "quill-icons-minimal", // Иконки Seti Theme
+  "editor.fontFamily": "'Fira Code', 'Courier New', monospace",
+  "editor.fontSize": 20,
+  "explorer.compactFolders": true,
+  "editor.lineHeight": 30,
+  "editor.fontLigatures": true, // Лигатуры для Fira Code
+  "editor.renderWhitespace": "boundary", // Показывать пробелы только между словами
+  "editor.minimap.enabled": false, // Отключить миникарту
+  // --- Отступы и форматирование ---
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.formatOnSave": true, // Форматировать при сохранении
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "files.autoSave": "onFocusChange", // Автосохранение через задержку
+  // --- Git ---
+  "git.enableSmartCommit": true, // Автоматически добавлять изменения перед коммитом
+  "scm.alwaysShowProviders": true, // Показывать все системы контроля версий
+  // --- Маркеры и ошибки ---
+  "editor.errorForeground": "#FF5C58", // Цвет ошибок
+  "editor.warningForeground": "#FFB86C", // Цвет предупреждений
+  "editor.infoForeground": "#57C7FF", // Цвет информации
+  // --- Интерфейс ---
+  "window.title": "${activeEditorShort}${separator}${rootName}", // Упрощенный заголовок окна
+  "workbench.startupEditor": "welcomePage", // Открывать новую вкладку при запуске
+  "workbench.sideBar.location": "left", // Расположение боковой панели слева
+  "workbench.tree.indent": 16, // Отступ в дереве файлов
+  "explorer.autoReveal": false,
+  // --- JavaScript/TypeScript ---
+  "javascript.updateImportsOnFileMove.enabled": "always", // Обновлять импорты при перемещении файлов
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  // --- Markdown ---
+  "markdown.preview.fontSize": 20, // Размер шрифта в превью Markdown
+  "markdown.styles": [
+    "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css"
+  ], // Стили для Markdown
+  // --- Работа с терминалом ---
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.fontFamily": "monospace",
+  "terminal.integrated.fontSize": 25,
+  "terminal.integrated.copyOnSelection": true, // Копировать текст при выделении
+  // --- Другие полезные настройки ---
+  "breadcrumbs.enabled": true, // Показывать хлебные крошки
+  "editor.wordWrap": "on", // Перенос длинных строк
+  "explorer.confirmDelete": false, // Не подтверждать удаление файлов
+  "editor.multiCursorModifier": "ctrlCmd", // Использовать Ctrl для многострочного редактирования
+  "security.workspace.trust.untrustedFiles": "open", // Разрешить открывать непроверенные файлы
+  "editor.stickyScroll.enabled": true, // Включить "липкий скролл" для контекста
+  "editor.snippetSuggestions": "top", // Показывать сниппеты вверху списка подсказок
+  "editor.suggestSelection": "first", // Выбирать первый вариант из подсказок
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  }, // Подсказки для разных типов контента
+  // --- Настройки навигации ---
+  "editor.links": true, // Активировать кликабельные ссылки внутри файла
+  "editor.gotoLocation.multipleDefinitions": "goto", // Переход к определению вместо Peek
+  "editor.gotoLocation.multipleImplementations": "goto", // Переход к реализации вместо Peek
+  "editor.gotoLocation.multipleDeclarations": "goto", // Переход к декларации вместо Peek
+  "editor.gotoLocation.multipleTypeDefinitions": "goto", // Переход к типу вместо Peek
+  "workbench.editor.showIcons": true, // Показывать иконки в редакторе
+  "workbench.editor.enablePreview": false, // Отключить предпросмотр при открытии файла
+  "workbench.editor.revealIfOpen": true, // Показывать уже открытые файлы в списке
+  "search.followSymlinks": false, // Не следовать символическим ссылкам при поиске
+  // --- Горячие клавиши для навигации ---
+  "keyboard.dispatch": "keyCode", // Улучшенная обработка горячих клавиш
+  "editor.accessibilitySupport": "off", // Отключить режим доступности для улучшения производительности
+  "window.zoomLevel": 1,
+  "window.zoomPerWindow": false,
+  "editor.mouseWheelZoom": false, // Приближение с помощью колесика мыши
+  "editor.scrollBeyondLastLine": false,
+  // Отключить прокрутку за последнюю строку
+  "editor.linkedEditing": true,
+  "cmake.ignoreCMakeListsMissing": true,
+  "liveServer.settings.port": 5503, // Включение редактирования связанных элементов
+}
